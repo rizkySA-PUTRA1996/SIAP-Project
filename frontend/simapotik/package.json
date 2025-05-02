@@ -1,0 +1,56 @@
+{
+    "name": "metronic-tailwind-html",
+    "version": "9.1.2",
+    "description": "Metronic 9 | Tailwind CSS based HTML, JavaScript & React Toolkit for Modern Web Applications",
+    "homepage": "https://keenthemes.com/metronic",
+    "keywords": [
+        "metronic",
+        "tailwind",
+        "react"
+    ],
+    "author": "KeenThemes",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build:js": "webpack --mode=development",
+        "build:css": "npx tailwindcss -i ./src/css/styles.css -o ./dist/assets/css/styles.css",
+        "build:css:watch": "npx tailwindcss -i ./src/css/styles.css -o ./dist/assets/css/styles.css --watch",
+        "build:prod": "npx tailwindcss -i ./src/css/styles.css -o ./dist/assets/css/styles.css --minify && npx webpack --env production",
+        "build": "npm run build:css && npm run build:js --mode=development",
+        "lint": "npx eslint src/core --ext .ts"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.26.0",
+        "@babel/preset-env": "^7.26.0",
+        "@eslint/js": "^9.14.0",
+        "autoprefixer": "^10.4.20",
+        "babel-loader": "^9.2.1",
+        "clean-webpack-plugin": "^4.0.0",
+        "copy-webpack-plugin": "^12.0.2",
+        "css-loader": "^7.1.2",
+        "eslint": "^9.14.0",
+        "mini-css-extract-plugin": "^2.9.2",
+        "mini-svg-data-uri": "^1.4.4",
+        "postcss": "^8.4.49",
+        "postcss-import": "^16.1.0",
+        "postcss-loader": "^8.1.1",
+        "postcss-nesting": "^13.0.1",
+        "postcss-preset-env": "^10.1.0",
+        "source-map-loader": "^5.0.0",
+        "style-loader": "^4.0.0",
+        "tailwindcss": "^3.4.14",
+        "terser-webpack-plugin": "^5.3.10",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.6.3",
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-merge-and-include-globally": "^2.3.4"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "apexcharts": "^4.0.0",
+        "axios": "^1.7.7",
+        "clipboard": "^2.0.11",
+        "esri-leaflet": "^3.0.13",
+        "esri-leaflet-geocoder": "^3.1.5"
+    }
+}

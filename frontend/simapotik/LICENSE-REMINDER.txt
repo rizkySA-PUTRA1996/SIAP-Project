@@ -1,0 +1,21 @@
+LICENSE REMINDER
+
+We wanted to take a moment to remind you of Metronic's license terms to ensure continued compliance and support for your projects. 
+Each Metronic license is intended for a single use, meaning each deployment or project requires a separate license. 
+If you're using Metronic for a SaaS service where end users are charged, an extended license is required. 
+For full details on our license terms, please visit: https://keenthemes.com/metronic/tailwind/docs/getting-started/license
+
+As the largest template kit on the market, maintaining and expanding Metronic requires significant resources. 
+Your contribution helps us deliver on our promise of innovation, with exciting new features on the way 
+for the latest Metronic Tailwind, React, Next.js, and MUI versions, including Calendar, Datepicker, 
+Daterangepicker, Advanced Select, Autocomplete for JavsScript version, and more. 
+
+We understand that some buyers might be unaware of these terms and may use a single license for multiple projects 
+or a regular license for SaaS projects. However, after our friendly reminders, most users are quick to correct these 
+issues once they’re made aware. If you fully comply with the license terms, please feel free to ignore this email.
+
+To purchase a new license, simply follow https://1.envato.market/Vm7VRE to but a regular license and 
+https://1.envato.market/daX0Ej to buy an extended license. Your continued support through proper licensing is crucial for Metronic’s growth. 
+
+Thank you for your understanding and for being part of the Metronic community. 
+We look forward to supporting your development needs in the future. 
