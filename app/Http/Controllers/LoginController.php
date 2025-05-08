@@ -11,7 +11,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('apotik.login');
+        return view('auth.login');
     }
     public function login(Request $request)
     {
