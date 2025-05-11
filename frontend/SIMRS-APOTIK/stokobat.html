@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="font-sans bg-gray-100">
   <div class="flex min-h-screen">
     <!-- Sidebar -->
-    <aside class="w-24 bg-blue-900 text-white flex flex-col items-center py-4">
-        <img src="assets/img/logo-rsi-banjarmasin.png" alt="Logo Rumah Sakit" class="w-16 h-16 rounded-full shadow-lg mb-8">
+    <aside class="flex flex-col items-center w-24 py-4 text-white bg-blue-900">
+        <img src="assets/img/logo-rsi-banjarmasin.png" alt="Logo Rumah Sakit" class="w-16 h-16 mb-8 rounded-full shadow-lg">
         <nav class="space-y-4">
           <a href="antrean.html" class="flex flex-col items-center text-sm text-white-700 hover:text-blue-800">
-            <div class="bg-white text-blue-900 p-2 rounded-full mb-1">
+            <div class="p-2 mb-1 text-blue-900 bg-white rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,7 +29,7 @@
             Antrean
           </a>                
           <a href="stokobat.html" class="flex flex-col items-center text-sm text-white-700 hover:text-blue-800">
-            <div class="bg-white text-blue-900 p-2 rounded-full mb-1 shadow">
+            <div class="p-2 mb-1 text-blue-900 bg-white rounded-full shadow">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                    class="w-6 h-6">
@@ -40,7 +40,7 @@
             Stok Obat
           </a>        
           <a href="riwayat.html" class="flex flex-col items-center text-sm text-white-700 hover:text-blue-800">
-            <div class="bg-white text-blue-900 p-2 rounded-full mb-1 mb-1">
+            <div class="p-2 mb-1 text-blue-900 bg-white rounded-full">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                    class="w-6 h-6">
@@ -56,9 +56,9 @@
     <!-- Main Content -->
     <main class="flex-1 p-6 bg-white rounded shadow-md">
       <!-- Header -->
-      <div class="flex justify-between items-center mb-6 relative px-4">
+      <div class="relative flex items-center justify-between px-4 mb-6">
         <h1 class="text-2xl font-semibold text-gray-800">Stok Obat</h1>
-        <div class="text-sm text-gray-700 flex items-center space-x-4">
+        <div class="flex items-center space-x-4 text-sm text-gray-700">
           <span>03 April 2025</span>
           <!-- icon notifikasi -->
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"class="w-6 h-6 text-blue-900">            
@@ -73,17 +73,17 @@
             </svg>
           </button> 
           <!-- Pop-up -->
-          <div id="profilePopup" class="hidden absolute top-10 right-4 w-64 bg-white rounded-xl shadow-lg border p-4 z-50">
-            <div class="flex items-center space-x-3 mb-3">
+          <div id="profilePopup" class="absolute z-50 hidden w-64 p-4 bg-white border shadow-lg top-10 right-4 rounded-xl">
+            <div class="flex items-center mb-3 space-x-3">
               <img src="assets/img/download (3).jpg"
-                  alt="Profile" class="w-12 h-12 rounded-full object-cover" />
+                  alt="Profile" class="object-cover w-12 h-12 rounded-full" />
               <div>
                 <p class="text-sm font-semibold text-gray-800">Mr. Roc</p>
                 <p class="text-xs text-gray-500">Petugas Apotek</p>
               </div>
             </div>
             <hr class="mb-3" />
-            <button class="flex items-center space-x-2 text-sm text-blue-900 hover:underline mb-3">
+            <button class="flex items-center mb-3 space-x-2 text-sm text-blue-900 hover:underline">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                   stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -91,61 +91,75 @@
               </svg>
               <span>Profil Saya</span>
             </button>
-            <button class="w-full bg-blue-900 text-white text-sm py-2 rounded-md hover:bg-blue-800">Keluar</button>
+            <button class="w-full py-2 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-800">Keluar</button>
           </div>
         </div>
       </div>
 
       <!-- Search -->
-      <div class="flex justify-end mb-4">
-        <input type="text" placeholder="Cari Obat..." class="px-4 py-2 border rounded-md text-sm" />
+      <div class="flex justify-end mb-4 space-x-2">
+        <input type="text" placeholder="Cari Obat..." class="w-1/3 px-4 py-2 border rounded-md" />
+        <select class="px-4 py-2 border rounded-md">
+          <option>Stok (Terbanyak)</option>
+          <option>Stok (Tersedikit)</option>
+          <option>Kadaluwarsa</option>
+        </select>
       </div>
-
+     
       <!-- Table -->
       <div class="overflow-auto">
-        <table class="min-w-full text-sm border-collapse border rounded-lg overflow-hidden">
-          <thead class="bg-blue-900 text-white">
+        <table class="min-w-full overflow-hidden text-sm border border-collapse rounded-lg">
+          <thead class="text-white bg-blue-900">
             <tr>
-              <th class="border px-4 py-2">Kode</th>
-              <th class="border px-4 py-2">Nama Obat</th>
-              <th class="border px-4 py-2">Kategori</th>
-              <th class="border px-4 py-2">Bentuk Satuan</th>
-              <th class="border px-4 py-2">Stok</th>
-              <th class="border px-4 py-2">Harga Jual</th>
-              <th class="border px-4 py-2">Kedaluwarsa</th>
+              <th class="px-4 py-2 border">Kode</th>
+              <th class="px-4 py-2 border">Nama Obat</th>
+              <th class="px-4 py-2 border">Kategori</th>
+              <th class="px-4 py-2 border">Bentuk Satuan</th>
+              <th class="px-4 py-2 border">Stok</th>
+              <th class="px-4 py-2 border">Harga Jual</th>
+              <th class="px-4 py-2 border">Kedaluwarsa</th>
             </tr>
           </thead>
           <tbody>
             <!-- Ulangi baris berikut ini dengan data dinamis -->
             <tr>
-              <td class="border px-4 py-2">PAR001</td>
-              <td class="border px-4 py-2">Paracetamol</td>
-              <td class="border px-4 py-2">Analgesik</td>
-              <td class="border px-4 py-2">Tablet</td>
-              <td class="border px-4 py-2">500</td>
-              <td class="border px-4 py-2">Rp. 5.000</td>
-              <td class="border px-4 py-2">2027-08-15</td>
+              <td class="px-4 py-2 border">PAR001</td>
+              <td class="px-4 py-2 border">Paracetamol</td>
+              <td class="px-4 py-2 border">Analgesik</td>
+              <td class="px-4 py-2 border">Tablet</td>
+              <td class="px-4 py-2 border">500</td>
+              <td class="px-4 py-2 border">Rp. 5.000</td>
+              <td class="px-4 py-2 border">
+                <div class="relative">
+                  <div class="flex items-center justify-between space-x-2">
+                    <span>2027-08-15</span>
+                    <button id="dropdownButton1" class="text-lg text-blue-600 hover:underline focus:outline-none">⋮</button>
+                  </div>
+                  <div id="dropdownMenu1" class="absolute right-0 z-10 hidden w-40 mt-2 bg-white border rounded-md shadow-lg">
+                    <button class="block w-full px-4 py-2 text-sm text-left hover:bg-gray-100">Ubah Stok</button>
+                    <button class="block w-full px-4 py-2 text-sm text-left hover:bg-gray-100">Ubah Harga</button>
+                    <button class="block w-full px-4 py-2 text-sm text-left hover:bg-gray-100">Ubah Kedaluwarsa</button>
+                    <button class="block w-full px-4 py-2 text-sm text-left text-red-600 hover:bg-red-50">Hapus Obat</button>
+                  </div>
+                </div>
+              </td>
             </tr>
             <!-- Tambah data lain di sini -->
           </tbody>
-        </table>
-      </div>
-    </main>
-  </div>
-
-  <script>
-    const btn = document.getElementById('profileBtn');
-    const popup = document.getElementById('profilePopup');
-
-    btn.addEventListener('click', () => {
-      popup.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', function(event) {
-      if (!btn.contains(event.target) && !popup.contains(event.target)) {
-        popup.classList.add('hidden');
-      }
-    });
-  </script>
+          
+          <script>
+            // JavaScript untuk menangani dropdown
+            const dropdownButton1 = document.getElementById('dropdownButton1');
+            const dropdownMenu1 = document.getElementById('dropdownMenu1');
+          
+            dropdownButton1.addEventListener('click', (event) => {
+              event.stopPropagation(); // Mencegah event bubbling
+              dropdownMenu1.classList.toggle('hidden');
+            });
+          
+            document.addEventListener('click', () => {
+              dropdownMenu1.classList.add('hidden');
+            });
+          </script>
 </body>
 </html>
