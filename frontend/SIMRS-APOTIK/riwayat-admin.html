@@ -1,1 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apoteker - Riwayat</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans bg-gray-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="flex flex-col items-center w-24 py-4 text-white bg-blue-900">
+        <img src="assets/img/logo-rsi-banjarmasin.png" alt="Logo Rumah Sakit" class="w-16 h-16 mb-8 rounded-full shadow-lg">
+        <nav class="space-y-4">
+                        
+          <a href="inventaris-obat-admin.html" class="flex flex-col items-center text-sm text-white-700 hover:text-blue-800">
+            <div class="p-2 mb-1 text-blue-900 bg-white rounded-full shadow">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 0 1-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0 1 12 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25m-17.25 0h7.5c.621 0 1.125.504 1.125 1.125M3.375 8.25c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125m17.25-3.75h-7.5c-.621 0-1.125.504-1.125 1.125m8.625-1.125c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125M12 10.875v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 10.875c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125M13.125 12h7.5m-7.5 0c-.621 0-1.125.504-1.125 1.125M20.625 12c.621 0 1.125.504 1.125 1.125v1.5c0 .621-.504 1.125-1.125 1.125m-17.25 0h7.5M12 14.625v-1.5m0 1.5c0 .621-.504 1.125-1.125 1.125M12 14.625c0 .621.504 1.125 1.125 1.125m-2.25 0c.621 0 1.125.504 1.125 1.125m0 1.5v-1.5m0 0c0-.621.504-1.125 1.125-1.125m0 0h7.5" />
+            </svg>
+            </div>
+            Stok Obat
+          </a>        
+          <a href="riwayat-admin.html" class="flex flex-col items-center text-sm text-white-700 ">
+          <div class="bg-white text-blue-900 p-2 rounded-full mb-1 mb-1 hover:bg-blue-900">
+            <!--ini icon riwayat-->
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                 viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                 class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+            </svg>
+          </div>
+          Riwayat
+        </a>
+        </nav>
+      </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-white rounded shadow-md">
+      <!-- Header -->
+      <div class="relative flex items-center justify-between px-4 mb-6">
+        <h1 class="text-2xl font-semibold text-gray-800">Riwayat E-Resep</h1>
+        <div class="flex items-center space-x-4 text-sm text-gray-700">
+          <span>03 April 2025</span>
+          <!-- icon notifikasi -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-900">            
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+          </svg> 
+          <!-- icon user -->  
+          <button id="profileBtn" class="flex items-center space-x-2 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-900">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+          </button> 
+          <!-- Pop-up -->
+          <div id="profilePopup" class="absolute z-50 hidden w-64 p-4 bg-white border shadow-lg top-10 right-4 rounded-xl">
+            <div class="flex items-center mb-3 space-x-3">
+              <img src="assets/img/download (3).jpg"
+                  alt="Profile" class="object-cover w-12 h-12 rounded-full" />
+              <div>
+                <p class="text-base font-semibold text-gray-800">Violet Evergarden</p>
+                <p class="text-xs text-gray-500">Petugas Apotek</p>
+              </div>
+            </div>
+            <hr class="mb-3" />
+            <button class="flex items-center mb-3 space-x-2 text-sm text-gray-800 hover:underline w-full px-2 py-2 rounded transition">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+              <span>Profil Saya</span>
+            </button>
+            <button class="w-full py-2 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-800">Keluar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="mb-4 flex justify-end">
+        <input type="text" placeholder="Cari Pasien..." class="w-1/4 px-3 py-1 text-sm border border-gray-300 rounded">
+      </div>
+
+      <!-- Table -->
+      <div class="overflow-auto">
+        <table class="min-w-full text-sm border-collapse border rounded-lg overflow-hidden">
+          <thead class="bg-blue-900 text-white">
+            <tr>
+              <th class="border px-4 py-2">Kode E-Resep</th>
+              <th class="border px-4 py-2">Rekam Medis</th>
+              <th class="border px-4 py-2">Nama Pasien</th>
+              <th class="border px-4 py-2">Tanggal Diterima</th>
+              <th class="border px-4 py-2">Tanggal Selesai</th>
+              <th class="border px-4 py-2">Status</th>
+              <th class="border px-4 py-2"></th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-800">
+            <!-- Contoh Baris -->
+            <tr>
+              <td class="border px-4 py-2">E022306</td>
+              <td class="border px-4 py-2">0000012345</td>
+              <td class="border px-4 py-2">Violet Evergarden</td>
+              <td class="border px-4 py-2">2027-08-15</td>
+              <td class="border px-4 py-2">2027-08-15</td>
+              <td class="px-4 py-2 text-green-600 border">Selesai</td>
+              <td class="border px-4 py-2 relative">
+                <button class="more-btn" onclick="toggleMenu(this)">⋮</button>
+                <div class="lihat-obat-menu absolute right-0 z-10 mt-2 w-40 bg-white border rounded shadow-lg hidden">
+                  <button class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12h6m-3-3v6m9-6.75V19.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 19.5V6.75M21 6.75A2.25 2.25 0 0 0 18.75 4.5h-1.5a.75.75 0 0 1-.75-.75V3a.75.75 0 0 0-.75-.75h-6A.75.75 0 0 0 9 3v.75a.75.75 0 0 1-.75.75h-1.5A2.25 2.25 0 0 0 3 6.75"/>
+                    </svg>
+                    Lihat Obat
+                  </button>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="border px-4 py-2">E022306</td>
+              <td class="border px-4 py-2">0000012345</td>
+              <td class="border px-4 py-2">Violet Evergarden</td>
+              <td class="border px-4 py-2">2027-08-15</td>
+              <td class="border px-4 py-2">2027-08-15</td>
+              <td class="px-4 py-2 text-red-600 border">Batal</td>
+              <td class="border px-4 py-2 relative">
+                <button class="more-btn" onclick="toggleMenu(this)">⋮</button>
+                <div class="lihat-obat-menu absolute right-0 z-10 mt-2 w-40 bg-white border rounded shadow-lg hidden">
+                  <button class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 text-blue-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M9 12h6m-3-3v6m9-6.75V19.5A2.25 2.25 0 0 1 18.75 21H5.25A2.25 2.25 0 0 1 3 19.5V6.75M21 6.75A2.25 2.25 0 0 0 18.75 4.5h-1.5a.75.75 0 0 1-.75-.75V3a.75.75 0 0 0-.75-.75h-6A.75.75 0 0 0 9 3v.75a.75.75 0 0 1-.75.75h-1.5A2.25 2.25 0 0 0 3 6.75"/>
+                    </svg>
+                    Lihat Obat
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Modal Data Obat -->
+  <div id="dataObatModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="bg-white rounded-xl shadow-lg w-full max-w-4xl p-8">
+      <h2 class="text-2xl font-semibold text-blue-900 mb-2">Data Obat</h2>
+      <p class="text-base text-gray-700 mb-1">Kode E-Resep : <span class="font-medium">E022306</span></p>
+      <p class="text-base text-gray-700 mb-4">Nama Pasien : <span class="font-medium">Violet Evergarden</span></p>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border border-collapse rounded-lg">
+          <thead class="bg-blue-900 text-white">
+            <tr>
+              <th class="px-4 py-2 border">Kode</th>
+              <th class="px-4 py-2 border">Nama Obat</th>
+              <th class="px-4 py-2 border">Kategori</th>
+              <th class="px-4 py-2 border">Bentuk Satuan</th>
+              <th class="px-4 py-2 border">Jumlah</th>
+            </tr>
+          </thead>
+          <tbody class="bg-gray-50">
+            <tr>
+              <td class="px-4 py-2 border">AMX01</td>
+              <td class="px-4 py-2 border">Amoxicilin</td>
+              <td class="px-4 py-2 border">Antibiotik</td>
+              <td class="px-4 py-2 border">Kapsul</td>
+              <td class="px-4 py-2 border">30 Kapsul</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border">PRS01</td>
+              <td class="px-4 py-2 border">Paracetamol</td>
+              <td class="px-4 py-2 border">Analgesik</td>
+              <td class="px-4 py-2 border">Tablet</td>
+              <td class="px-4 py-2 border">12 Tablet</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border">CTR01</td>
+              <td class="px-4 py-2 border">Cetirizine</td>
+              <td class="px-4 py-2 border">Antihistamin</td>
+              <td class="px-4 py-2 border">Sirup</td>
+              <td class="px-4 py-2 border">1 Botol</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border">SBM01</td>
+              <td class="px-4 py-2 border">Salbutamol</td>
+              <td class="px-4 py-2 border">Bronkodilator</td>
+              <td class="px-4 py-2 border">Inhaler</td>
+              <td class="px-4 py-2 border">2 Buah</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border">DCF01</td>
+              <td class="px-4 py-2 border">Diclofenac</td>
+              <td class="px-4 py-2 border">Analgesik</td>
+              <td class="px-4 py-2 border">Gel</td>
+              <td class="px-4 py-2 border">1 Tube</td>
+            </tr>
+            <tr>
+              <td class="px-4 py-2 border">FXE01</td>
+              <td class="px-4 py-2 border">Fluoxetine</td>
+              <td class="px-4 py-2 border">Antidepresan</td>
+              <td class="px-4 py-2 border">Kapsul</td>
+              <td class="px-4 py-2 border">30 Kapsul</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="flex justify-end mt-6">
+        <button onclick="closeModal('dataObatModal')" class="px-6 py-2 rounded bg-blue-900 text-white hover:bg-blue-800">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Profile popup logic
+    const profileBtn = document.getElementById('profileBtn');
+    const profilePopup = document.getElementById('profilePopup');
+
+    profileBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      profilePopup.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!profilePopup.contains(e.target) && e.target !== profileBtn) {
+        profilePopup.classList.add('hidden');
+      }
+    });
+
+    // Toggle menu function (lihat obat)
+    function toggleMenu(btn) {
+      document.querySelectorAll('.lihat-obat-menu').forEach(menu => menu.classList.add('hidden'));
+      const menu = btn.nextElementSibling;
+      menu.classList.toggle('hidden');
+      document.addEventListener('click', function handler(e) {
+        if (!menu.contains(e.target) && e.target !== btn) {
+          menu.classList.add('hidden');
+          document.removeEventListener('click', handler);
+        }
+      });
+    }
+
+    // Modal logic
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Event untuk tombol "Lihat Obat"
+    document.querySelectorAll('.lihat-obat-menu button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        openModal('dataObatModal');
+        btn.parentElement.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
 
