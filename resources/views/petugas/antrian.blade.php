@@ -94,8 +94,8 @@
                                 <td class="py-2 px-4 border">{{ $a->no_antrian }}</td>
                                 <td class="py-2 px-4 border">{{ $a->status ?? '-'}}</td>
                                 <td class="py-2 px-4 border">
-                                    {{-- <a href="{{ route('petugas.antrianDetail', $a->id_pasien) }}" type="button"
-                                        class="btn btn-info">Detail</a> --}}
+                                    <a href="{{ route('petugas.antrianDetail', $a->id_resep) }}" type="button"
+                                        class="btn btn-info">Detail</a>
                                 </td>
                             </tr>
                             @empty

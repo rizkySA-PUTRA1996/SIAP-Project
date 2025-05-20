@@ -15,7 +15,7 @@ class RiwayatController extends Controller
         $search = $request->input('search');
 
         // Ambil data riwayat dan grup berdasarkan id_resep
-        $riwayat = DetailAntrian::with(['riwayat', 'antrian', 'obat'])
+        $riwayat = DetailAntrian::with(['riwayat', 'antrian', 'obat.kategori'])
             ->when($search, function ($query, $search) {
                 $query->whereHas('riwayat', function ($q) use ($search) {
                     $q->where('nama_pasien', 'like', "%$search%");

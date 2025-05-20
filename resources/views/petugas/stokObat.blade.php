@@ -89,7 +89,7 @@
               <td class="border px-4 py-2">{{ $o->kategori->nama_kategori }}</td>
               <td class="border px-4 py-2">{{ $o->bentuk_satuan }}</td>
               <td class="border px-4 py-2">{{ $o->stok }}</td>
-              <td class="border px-4 py-2">{{ $o->harga}}</td>
+              <td class="border px-4 py-2">Rp. {{ $o->harga}}</td>
               <td class="border px-4 py-2">{{ $o->kadaluarsa }}</td>
             </tr>
             @endforeach

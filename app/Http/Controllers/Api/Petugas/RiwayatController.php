@@ -12,7 +12,7 @@ class RiwayatController extends Controller
     {
         try {
             // Ambil semua detail antrian beserta relasi
-            $riwayat = DetailAntrian::with(['riwayat', 'antrian', 'obat'])->get();
+            $riwayat = DetailAntrian::with(['riwayat', 'antrian', 'obat.kategori'])->get();
 
             // Kelompokkan berdasarkan id_resep
             $grouped = $riwayat->groupBy('id_resep');
@@ -28,7 +28,7 @@ class RiwayatController extends Controller
                         return [
                             'kode_obat' => $detail->obat->kode_obat ?? '-',
                             'nama_obat' => $detail->obat->nama_obat ?? '-',
-                            'kategori_obat' => $detail->obat->kategori_obat ?? '-',
+                            'kategori_obat' => $detail->kategori->nama_kategori ?? '-',
                             'bentuk_satuan' => $detail->obat->bentuk_satuan ?? '-',
                             'jumlah' => $detail->jumlah,
                         ];

@@ -147,7 +147,7 @@
                                 <tr>
                                     <td class="px-4 py-2 border">{{ $detail->obat->kode_obat }}</td>
                                     <td class="px-4 py-2 border">{{ $detail->obat->nama_obat }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->kategori_obat }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->kategori->nama_kategori }}</td>
                                     <td class="px-4 py-2 border">{{ $detail->obat->bentuk_satuan }}</td>
                                     <td class="px-4 py-2 border">{{ $detail->jumlah }}</td>
                                 </tr>

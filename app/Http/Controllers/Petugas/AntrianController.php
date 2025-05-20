@@ -43,8 +43,6 @@ class AntrianController extends Controller
      */
     public function show(Antrian $antrian, $id)
     {
-        $antrian = Antrian::with('pasien', 'transaksi', 'detailTransaksi.obat', 'detailTransaksi.batch')->findOrFail($id);
-        return view('petugas.antrian', compact('antrian', 'antrianDetail'));
 
     }
 
