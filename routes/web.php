@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ObatController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Petugas\AntrianController;
 use App\Http\Controllers\Petugas\AntrianDetailController;
@@ -19,3 +20,5 @@ Route::get('/', function () {
     Route::get('petugas/obat', [StokObatController::class, 'index'])->name('petugas.stokObat');
     Route::get('petugas/riwayat', [RiwayatController::class, 'index'])->name('petugas.riwayatAntrian');
     Route::get('petugas/detail/{id_resep}', [AntrianDetailController::class, 'show'])->name('petugas.antrianDetail');
+
+    Route::resource('admin/obat', ObatController::class)->names('admin.stokObat');

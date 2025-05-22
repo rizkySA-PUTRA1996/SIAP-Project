@@ -79,10 +79,10 @@
                     <p><strong>Nama Pasien :</strong> {{ $detail->riwayat->nama_pasien ?? '-' }}</p>
                     <p><strong>Waktu E-Resep diterima :</strong> {{ $detail->riwayat->tanggal_diterima ?? '-' }}</p>
                     <p>
-                        <strong>Status Pembayaran :</strong>
+                        <strong>Status :</strong>
                         <span
-                            class="font-semibold {{ $detail->riwayat->status === 'Selesai' ? 'text-green-600' : 'text-red-600' }}">
-                            {{ $detail->status ?? '-' }}
+                            class="font-semibold {{ $detail->antrian->status === 'Sudah Bayar' ? 'text-green-600' : 'text-blue-600' }}">
+                            {{ $detail->antrian->status ?? '-' }}
                         </span>
                     </p>
                 </div>

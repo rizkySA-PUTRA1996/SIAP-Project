@@ -23,12 +23,11 @@ class LoginController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'email'    => 'required|email',
+            'email'    => 'required|string|email',
             'password' => 'required|string',
-            'role'     => 'required|in:admin,petugas',
         ]);
 
-        $user = User::where('email', $request->email)
+        $user = User::where('email', $request->username)
                     ->where('role', $request->role)
                     ->first();
 
@@ -36,10 +35,10 @@ class LoginController extends Controller
             Auth::login($user);
 
             // Redirect berdasarkan role
-            if ($user->role === 'Admin') {
-                return redirect()->route('admin.dashboard');
-            } elseif ($user->role === 'Petugas') {
-                return redirect()->route('petugas.antrian');
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.stokObat.index');
+            } elseif ($user->role === 'petugas') {
+                return redirect()->route('petugas.antrian.index');
             }
 
             // Fallback jika role tidak dikenali
@@ -48,7 +47,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email, password, atau role tidak sesuai.',
+            'email' => 'email atau password tidak sesuai.',
         ])->withInput();
     }
 

@@ -21,6 +21,7 @@ class AntrianController extends Controller
                     'no' => $index + 1,
                     'rekam medis' => $item->rm,
                     'no resep' => $item->id_resep,
+                    'no registrasi' => $item->no_registrasi,
                     'id poli' => $item->id_poli,
                     'Antrean' => $item->no_antrian,
                     'status' => $item->status,

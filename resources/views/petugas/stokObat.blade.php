@@ -61,7 +61,7 @@
       <!-- Search -->
       <form method="GET" action="{{ route('petugas.stokObat') }}">
         <div class="flex justify-end mb-4">
-            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Obat..."
+            <input type="text" id="searchInput" name="search" value="{{ request('search') }}" placeholder="Cari Obat..."
              class="px-4 py-2 border rounded-md text-sm" />
         </div>
     </form>
@@ -84,7 +84,7 @@
             <!-- Ulangi baris berikut ini dengan data dinamis -->
             @foreach ($stokObat as $o)
             <tr>
-              <td class="border px-4 py-2">{{ $o->kode_obat}}</td>
+              <td class="border px-4 py-2">{{ $o->id_obat}}</td>
               <td class="border px-4 py-2">{{ $o->nama_obat }}</td>
               <td class="border px-4 py-2">{{ $o->kategori->nama_kategori }}</td>
               <td class="border px-4 py-2">{{ $o->bentuk_satuan }}</td>
@@ -116,6 +116,28 @@
         popup.classList.add('hidden');
       }
     });
+
+    const searchInput = document.getElementById("searchInput");
+    const tableRows = document.querySelectorAll("tbody tr");
+
+    searchInput.addEventListener("input", function () {
+    const searchTerm = this.value.toLowerCase();
+
+    tableRows.forEach((row) => {
+        const namaObat = row.querySelector(".col-nama")
+            ? row.querySelector(".col-nama").textContent.toLowerCase()
+            : row.querySelectorAll("td")[1].textContent.toLowerCase();
+
+        if (searchTerm.length >= 3 && namaObat.includes(searchTerm)) {
+            row.style.display = "";
+        } else if (searchTerm.length < 3) {
+            row.style.display = "";
+        } else {
+            row.style.display = "none";
+        }
+    });
+});
+
   </script>
 </body>
 </html>

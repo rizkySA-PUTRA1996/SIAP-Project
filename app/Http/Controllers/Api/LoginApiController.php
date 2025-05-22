@@ -35,7 +35,7 @@ class LoginApiController extends Controller
         }else{
             return response()->json([
                 'response_code' => 404,
-                'message' => 'Email atau Password Tidak Ditemukan!'
+                'message' => 'email atau Password Tidak Ditemukan!'
             ]);
         }
     }

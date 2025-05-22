@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\ObatController;
 use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\Petugas\AntrianController;
 use App\Http\Controllers\Api\Petugas\AntrianDetailController;
@@ -24,3 +25,5 @@ Route::resource('petugas/antrian', AntrianController::class);
 Route::resource('petugas/riwayat', RiwayatController::class);
 Route::resource('petugas/obat', StokObatController::class);
 Route::resource('petugas/detail', AntrianDetailController::class);
+
+Route::resource('admin/obat', ObatController::class)->names('admin.obat');

@@ -13,9 +13,9 @@ class StokObatController extends Controller
         $search = $request->input('search');
 
         $stokObat = StokObat::with('kategori')
-                    ->when($search, function ($query, $search) {
-                            $query->where('nama_obat', 'like', "%$search%");
-                    })->paginate(13);
+            ->when($search, function ($query, $search) {
+                $query->where('nama_obat', 'like', "%$search%");
+            })->paginate(13);
         return view('petugas.stokObat', compact('stokObat'));
     }
 }

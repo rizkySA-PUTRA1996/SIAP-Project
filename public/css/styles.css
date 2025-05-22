@@ -1,0 +1,38 @@
+table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background: #1e40af;
+    color: white;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+td {
+    white-space: nowrap;
+}
+
+/* Responsive table adjustments */
+@media (max-width: 640px) {
+    .table-container {
+        font-size: 0.75rem;
+        /* ukuran terkecil gasan hp
+      }
+
+      th,
+      td {
+        padding: 0.5rem;
+        /* Adjust padding for smaller screens */
+    }
+}

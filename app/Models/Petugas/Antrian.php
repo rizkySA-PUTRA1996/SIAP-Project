@@ -22,4 +22,8 @@ class Antrian extends Model
     {
         return $this->hasMany(DetailAntrian::class, 'id_resep', 'id_resep');
     }
+    public function poli()
+    {
+        return $this->belongsTo(Poli::class, 'id_poli', 'id_poli');
+    }
 }

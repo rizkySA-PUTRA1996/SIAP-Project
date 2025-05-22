@@ -1,12 +1,17 @@
 <?php
 
-namespace App\Models\Petugas;
+namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StokObat extends Model
+class Obat extends Model
 {
     protected $table = 'obat';
+
+    protected $primaryKey = 'id_obat';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
     protected $fillable = [
         'id_obat',
         'nama_obat',
@@ -22,4 +27,3 @@ class StokObat extends Model
         return $this->belongsTo(KategoriObat::class, 'id_kategori', 'id_kategori');
     }
 }
-

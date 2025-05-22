@@ -18,10 +18,10 @@ class StokObatController extends Controller
             $data = $obat->map(function ($item) {
 
                 return [
-                    'kode obat' => $item->kode_obat,
-                    'nama obat' => $item->nama_obat,
+                    'id_obat' => $item->id_obat,
+                    'nama_obat' => $item->nama_obat,
                     'kategori' => $item->kategori->nama_kategori,
-                    'bentuk satuan' => $item->bentuk_satuan,
+                    'bentuk_satuan' => $item->bentuk_satuan,
                     'stok' => $item->stok,
                     'harga jual' => $item->harga,
                     'kadaluarsa' => $item->kadaluarsa,

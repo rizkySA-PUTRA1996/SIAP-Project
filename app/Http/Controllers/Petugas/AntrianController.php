@@ -9,18 +9,25 @@ use Illuminate\Http\Request;
 class AntrianController extends Controller
 {
     public function index(Request $request)
-    {
-        // $search = $request->input('search');
+{
+    $antrian = Antrian::with('poli')->paginate(10);
 
-        $antrian = Antrian::paginate(7);
-        // when($search, function ($query) use ($search) {
-        //     $query->whereHas('pasien', function ($q) use ($search) {
-        //     $q->where('nama_pasien', 'like', "%$search%");
-        //     });
-        // })->paginate(7);
+    // Ubah angka status menjadi teks
+    $antrian->getCollection()->transform(function ($item) {
+        if (in_array($item->status, [1, 2, 3])) {
+            $item->status = 'Diterima';
+        } elseif ($item->status == 4) {
+            $item->status = 'Diproses';
+        } elseif ($item->status == 5) {
+            $item->status = 'Selesai';
+        } else {
+            $item->status = '-';
+        }
+        return $item;
+    });
 
     return view('petugas.antrian', compact('antrian'));
-    }
+}
 
     /**
      * Show the form for creating a new resource.

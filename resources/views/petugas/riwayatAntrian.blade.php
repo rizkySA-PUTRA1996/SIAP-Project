@@ -64,7 +64,7 @@
             <!-- Search -->
             <form METHOD="GET" action="{{ route('petugas.riwayatAntrian') }}" class="flex justify-end mb-2">
                 <div class="mb-4 flex justify-end">
-                    <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Pasien..."
+                    <input type="text" id="searchInput"name="search" value="{{ request('search') }}" placeholder="Cari Pasien..."
                         class="px-3 py-1 text-sm border border-gray-300 rounded" />
             </form>
     </div>
@@ -208,6 +208,26 @@
                 btn.parentElement.classList.add('hidden');
             });
         });
+
+        const searchInput = document.getElementById('searchInput');
+        const tableRows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function () {
+          const searchTerm = this.value.toLowerCase();
+
+          tableRows.forEach(row => {
+            const namaPasien = row.cells[2].textContent.toLowerCase();
+
+            if (searchTerm.length >= 3 && namaPasien.startsWith(searchTerm)) {
+              row.style.display = '';
+            } else if (searchTerm.length < 3) {
+              row.style.display = '';
+            } else {
+              row.style.display = 'none';
+            }
+          });
+        });
+
     </script>
 </body>
 

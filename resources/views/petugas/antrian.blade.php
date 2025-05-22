@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Antrean Apotek</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 
 <body class="bg-gray-800 text-gray-900">
@@ -67,18 +67,21 @@
             <section>
                     <form method="GET" action="{{ route('petugas.antrian') }}" class="flex justify-end mb-2">
                         <div class="flex justify-end mb-4">
-                            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari Pasien."
+                            <input type="text" id="searchInput" name="search" value="{{ request('search') }}" placeholder="Cari Pasien."
                              class="px-4 py-2 border rounded-md text-sm" />
                         </div>
                     </form>
 
-                <table class="min-w-full text-sm border-collapse border rounded-lg overflow-hidden">
+                <div class="table-wrapper">
+                <div class="table-container">
+                <table class="min-w-full text-sm border-collapse border rounded-lg">
                     <thead>
                         <tr class="bg-blue-900 text-white">
                             <th class="py-2 px-4 border">No</th>
                             <th class="py-2 px-4 border">Rekam Medis</th>
                             <th class="py-2 px-4 border">No. Resep</th>
-                            <th class="py-2 px-4 border">ID Poli</th>
+                            <th class="py-2 px-4 border">No. Registrasi</th>
+                            <th class="py-2 px-4 border">Nama Poli</th>
                             <th class="py-2 px-4 border">Antrean</th>
                             <th class="py-2 px-4 border">Status</th>
                             <th class="py-2 px-4 border">Aksi</th>
@@ -90,7 +93,8 @@
                                 <td class="py-2 px-4 border">{{ $loop->iteration }}</td>
                                 <td class="py-2 px-4 border">{{ $a->rm }}</td>
                                 <td class="py-2 px-4 border">{{ $a->id_resep }}</td>
-                                <td class="py-2 px-4 border">{{ $a->id_poli }}</td>
+                                <td class="py-2 px-4 border">{{ $a->no_registrasi }}</td>
+                                <td class="py-2 px-4 border">{{ $a->poli->nama_poli ?? '-'}}</td>
                                 <td class="py-2 px-4 border">{{ $a->no_antrian }}</td>
                                 <td class="py-2 px-4 border">{{ $a->status ?? '-'}}</td>
                                 <td class="py-2 px-4 border">
@@ -105,9 +109,12 @@
                         @endforelse
                     </tbody>
                 </table>
-                <div class="mt-6">
+                <div class="mt-2">
                     {{ $antrian->links() }}
                 </div>
+                </div>
+                </div>
+
             </section>
         </main>
     </div>
@@ -124,6 +131,32 @@
             popup.classList.add('hidden');
           }
         });
+
+        const searchInput = document.getElementById('searchInput');
+    const tableRows = document.querySelectorAll('tbody tr');
+
+    searchInput.addEventListener('input', function () {
+      const searchTerm = this.value.toLowerCase();
+
+      tableRows.forEach(row => {
+        const rekamMedis = row.cells[1].textContent.toLowerCase();
+        const noResep = row.cells[2].textContent.toLowerCase();
+        const idPoli = row.cells[3].textContent.toLowerCase();
+        const antrean = row.cells[4].textContent.toLowerCase();
+
+        if (
+          rekamMedis.includes(searchTerm) ||
+          noResep.includes(searchTerm) ||
+          idPoli.includes(searchTerm) ||
+          antrean.includes(searchTerm)
+        ) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+
       </script>
 </body>
 </html>
