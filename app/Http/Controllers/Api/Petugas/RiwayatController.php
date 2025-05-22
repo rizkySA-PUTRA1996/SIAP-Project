@@ -26,7 +26,7 @@ class RiwayatController extends Controller
                     'nama_pasien' => $first->riwayat->nama_pasien ?? '-',
                     'obat' => $items->map(function ($detail) {
                         return [
-                            'kode_obat' => $detail->obat->kode_obat ?? '-',
+                            'kode_obat' => $detail->obat->id_obat ?? '-',
                             'nama_obat' => $detail->obat->nama_obat ?? '-',
                             'kategori_obat' => $detail->kategori->nama_kategori ?? '-',
                             'bentuk_satuan' => $detail->obat->bentuk_satuan ?? '-',

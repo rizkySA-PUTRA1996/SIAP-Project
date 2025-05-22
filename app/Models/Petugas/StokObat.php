@@ -21,5 +21,9 @@ class StokObat extends Model
     {
         return $this->belongsTo(KategoriObat::class, 'id_kategori', 'id_kategori');
     }
+    public function detailAntrian()
+    {
+        return $this->hasMany(DetailAntrian::class, 'id_obat', 'id_obat');
+    }
 }
 

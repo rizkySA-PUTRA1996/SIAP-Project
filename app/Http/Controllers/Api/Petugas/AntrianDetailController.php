@@ -24,7 +24,7 @@ class AntrianDetailController extends Controller
                     ->get()
                     ->map(function ($item) {
                         return [
-                            'kode_obat'    => $item->obat->kode_obat ?? '-',
+                            'id_obat'    => $item->obat->id_obat ?? '-',
                             'nama_obat'    => $item->obat->nama_obat ?? '-',
                             'kategori'     => $item->kategori->nama_kategori ?? '-',
                             'bentuk_satuan'=> $item->obat->bentuk_satuan ?? '-',
