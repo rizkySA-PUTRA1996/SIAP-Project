@@ -3,10 +3,15 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory; //jangan di hapus buat jalanin test
+
+use
 
 class Obat extends Model
 {
     protected $table = 'obat';
+
+    use HasFactory;
 
     protected $primaryKey = 'id_obat';
     public $incrementing = false;
