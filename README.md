@@ -1,6 +1,6 @@
 # SIAP-Project
 
-[![Violet Evergarden](./images/violet%20x%20riski.jpg)](https://github.com/rizkySA-PUTRA1996/SIAP-Project)
+![Violet Evergarden](./images/violet%20x%20riski.jpg)
 
 > Sistem Informasi Rumah Sakit divisi Apotik – Proyek ini bertujuan untuk membangun sebuah platform yang membantu pengelolaan data akademik dan penjadwalan kegiatan secara efisien.
 
