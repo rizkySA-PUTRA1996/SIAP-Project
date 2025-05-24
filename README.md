@@ -2,7 +2,7 @@
 
 [![Violet Evergarden](https://idseducation.com/wp-content/uploads/2021/04/9.-Sinopsis-Violet-Evergarden-The-Movie.jpeg)](https://github.com/rizkySA-PUTRA1996/SIAP-Project)
 
-> Sistem Informasi Akademik dan Penjadwalan – Proyek ini bertujuan untuk membangun sebuah platform yang membantu pengelolaan data akademik dan penjadwalan kegiatan secara efisien.
+> Sistem Informasi Rumah Sakit divisi Apotik – Proyek ini bertujuan untuk membangun sebuah platform yang membantu pengelolaan data akademik dan penjadwalan kegiatan secara efisien.
 
 ---
 
