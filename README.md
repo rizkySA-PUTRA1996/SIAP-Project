@@ -36,7 +36,7 @@
 
 | 👤 Nama                  | 🧰 Peran                 | 🔗 Kontak                                                              |
 |--------------------------|--------------------------|------------------------------------------------------------------------|
-| Rizki Saputra            | 👔 Project Manager        | [Soon]()                                                              |
+| Rizky Saputra            | 👔 Project Manager        | [Soon]()                                                              |
 | M. Najuan Amin           | 🛠️ Backend Engineer       | [Soon]()                                                              |
 | M. Abdillah Hidayat      | 🧪 Backend & UI Helper    | [Soon]()                                                              |
 | M. Ridha Maulana         | 🧮 Database Engineer      | [Soon]()                                                              |
