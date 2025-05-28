@@ -30,9 +30,10 @@ class LoginApiController extends Controller
             return response()->json([
                 'response_code' => 200,
                 'message' => 'Login Berhasil',
-                'content' => $user
+                'content' => $user,
+                'remember_token' => $user->remember_token
             ]);
-        }else{
+        } else {
             return response()->json([
                 'response_code' => 404,
                 'message' => 'email atau Password Tidak Ditemukan!'

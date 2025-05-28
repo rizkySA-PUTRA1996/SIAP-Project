@@ -91,10 +91,10 @@
                     <tr>
                         <td class="border px-4 py-2">{{ $id_resep }}</td>
                         <td class="border px-4 py-2">{{ $first->antrian->rm }}</td>
-                        <td class="border px-4 py-2">{{ $first->riwayat->nama_pasien }}</td>
-                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_diterima }}</td>
-                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_selesai }}</td>
-                        <td class="px-4 py-2 text-green-600 border">{{ $first->riwayat->status }}</td>
+                        <td class="border px-4 py-2">{{ $first->riwayat->nama_pasien ?? '-'}}</td>
+                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_diterima ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_selesai ?? '-'}}</td>
+                        <td class="px-4 py-2 text-green-600 border">{{ $first->riwayat->status ?? '-' }}</td>
                         <td class="border px-4 py-2 relative">
                             <button class="more-btn" onclick="toggleMenu(this)">⋮</button>
                             <div class="lihat-obat-menu absolute right-0 z-10 mt-2 w-40 bg-white border rounded shadow-lg hidden">
@@ -130,7 +130,7 @@
                 <p class="text-base text-gray-700 mb-1">Kode E-Resep : <span
                         class="font-medium">{{ $id_resep }}</span></p>
                 <p class="text-base text-gray-700 mb-4">Nama Pasien : <span
-                        class="font-medium">{{ $first->riwayat->nama_pasien }}</span></p>
+                        class="font-medium">{{ $first->riwayat->nama_pasien ?? '-'}}</span></p>
                 <div class="overflow-x-auto">
                     <table class="min-w-full border border-collapse rounded-lg">
                         <thead class="bg-blue-900 text-white">
@@ -145,11 +145,11 @@
                         <tbody class="bg-gray-50">
                             @foreach ($items as $detail)
                                 <tr>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->kode_obat }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->nama_obat }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->kategori->nama_kategori }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->bentuk_satuan }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->jumlah }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->kode_obat ?? '-' }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->nama_obat ?? '-'}}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->kategori->nama_kategori ?? '-' }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->bentuk_satuan ?? '-'}}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->jumlah ?? '-'}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

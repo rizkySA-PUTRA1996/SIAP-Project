@@ -104,7 +104,7 @@
                     <tbody class="bg-white text-gray-800">
                         @foreach ($resepDetails as $item)
                             <tr class="border">
-                                <td class="py-2 px-4 border">{{ $item->obat->kode_obat ?? '-' }}</td>
+                                <td class="py-2 px-4 border">{{ $item->obat->id_obat ?? '-' }}</td>
                                 <td class="py-2 px-4 border">{{ $item->obat->nama_obat ?? '-' }}</td>
                                 <td class="py-2 px-4 border">{{ $item->kategori->nama_kategori ?? '-' }}</td>
                                 <td class="py-2 px-4 border">{{ $item->obat->bentuk_satuan ?? '-' }}</td>

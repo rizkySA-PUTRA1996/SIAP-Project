@@ -20,6 +20,8 @@ class User extends Authenticatable
      */
     protected $table = 'apotik_user';
     protected $primaryKey = 'id_user';
+    public $incrementing = false;
+    protected $keyType = 'string';
     protected $fillable = [
         'name',
         'email',
