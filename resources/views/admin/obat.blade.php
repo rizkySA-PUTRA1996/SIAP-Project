@@ -54,8 +54,11 @@
                             </svg>
                             <span>Profil Saya</span>
                         </button>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
                         <button
                             class="w-full py-2 text-sm text-white bg-blue-900 rounded-md hover:bg-blue-800">Keluar</button>
+                        </form>
                     </div>
                 </div>
             </div>

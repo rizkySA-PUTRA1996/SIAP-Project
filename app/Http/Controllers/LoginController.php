@@ -27,20 +27,17 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        $user = User::where('email', $request->username)
-                    ->where('role', $request->role)
-                    ->first();
+        $user = User::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
             Auth::login($user);
+            $request->session()->regenerate();
 
-            // Redirect berdasarkan role
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.stokObat.index');
-            } elseif ($user->role === 'petugas') {
-                return redirect()->route('petugas.antrian.index');
-            }
-
+            return match ($user->role) {
+                'Admin' => redirect()->route('admin.stokObat.index'),
+                'Petugas' => redirect()->route('petugas.antrian'),
+                default => redirect()->route('login')->withErrors(['role' => 'Role tidak dikenali.']),
+            };
             // Fallback jika role tidak dikenali
             Auth::logout();
             return back()->withErrors(['role' => 'Role tidak dikenali.']);

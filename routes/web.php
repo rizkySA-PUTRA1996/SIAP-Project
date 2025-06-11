@@ -6,19 +6,40 @@ use App\Http\Controllers\Petugas\AntrianController;
 use App\Http\Controllers\Petugas\AntrianDetailController;
 use App\Http\Controllers\Petugas\RiwayatController;
 use App\Http\Controllers\Petugas\StokObatController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::fallback(function () {
+    if (Auth::check()) {
+        $user = Auth::user();
+        if ($user->role === 'Admin') {
+            return redirect()->route('admin.stokObat.index');
+        } elseif ($user->role === 'Petugas') {
+            return redirect()->route('petugas.antrian');
+        }
+    }
+    return redirect()->route('login');
 });
 
+Route::middleware('guest')->prefix('/')->group(function () {
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'store']);
-    Route::get('logout', [LoginController::class, 'destroy'])->name('logout');
+});
 
-    Route::get('petugas/antrian', [AntrianController::class, 'index'])->name('petugas.antrian');
-    Route::get('petugas/obat', [StokObatController::class, 'index'])->name('petugas.stokObat');
-    Route::get('petugas/riwayat', [RiwayatController::class, 'index'])->name('petugas.riwayatAntrian');
-    Route::get('petugas/detail/{id_resep}', [AntrianDetailController::class, 'show'])->name('petugas.antrianDetail');
+Route::post('logout', [LoginController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');
 
-    Route::resource('admin/obat', ObatController::class)->names('admin.stokObat');
+    Route::middleware(['auth', 'Petugas'])->prefix('petugas')->group(function () {
+        Route::get('antrian', [AntrianController::class, 'index'])->name('petugas.antrian');
+        Route::get('obat', [StokObatController::class, 'index'])->name('petugas.stokObat');
+        Route::get('riwayat', [RiwayatController::class, 'index'])->name('petugas.riwayatAntrian');
+        Route::get('detail/{id_resep}', [AntrianDetailController::class, 'show'])->name('petugas.antrianDetail');
+    });
+
+    Route::middleware(['auth', 'Admin'])->prefix('admin')->group(function () {
+        Route::resource('/obat', ObatController::class)->names('admin.stokObat');
+    });

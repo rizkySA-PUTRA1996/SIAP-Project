@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -18,16 +18,16 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $table = 'apotik_user';
-    protected $primaryKey = 'id_user';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
         'remember_token',
+        'created_at',
+        'updated_at',
     ];
 
     /**
