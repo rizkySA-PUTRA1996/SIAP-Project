@@ -19,7 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // new route
-Route::post('login', [LoginApiController::class, 'login']);
+Route::post('/login', [LoginApiController::class, 'login']);
+Route::middleware('auth:sanctum')->post('/logout', [LoginApiController::class, 'logout']);
 
 Route::resource('petugas/antrian', AntrianController::class);
 Route::resource('petugas/riwayat', RiwayatController::class);

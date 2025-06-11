@@ -13,31 +13,38 @@ class LoginApiController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        $login = Auth::attempt($credentials);
-        if ($login) {
-            $user = Auth::user();
 
-            if (!$user instanceof User) {
-                return response()->json([
-                    'response_code' => 500,
-                    'message' => 'User object is not valid'
-                ]);
-            }
+        if (!Auth::attempt($credentials)) {
+            return response()->json([
+                'message' => 'Login gagal',
+            ], 401);
+        }
 
-            $user->remember_token = Str::random(100);
-            $user->save();
+        $user = User::where('email', $request->email)->first();
 
+        $token = $user->createToken('API Token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login berhasil',
+            'token' => $token
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+
+        if ($user) {
+            $user->tokens()->delete(); // Menghapus semua token aktif
             return response()->json([
                 'response_code' => 200,
-                'message' => 'Login Berhasil',
-                'content' => $user,
-                'remember_token' => $user->remember_token
-            ]);
-        } else {
-            return response()->json([
-                'response_code' => 404,
-                'message' => 'email atau Password Tidak Ditemukan!'
+                'message' => 'Logout berhasil.'
             ]);
         }
+
+        return response()->json([
+            'response_code' => 401,
+            'message' => 'User tidak ditemukan atau belum login.'
+        ]);
     }
 }
