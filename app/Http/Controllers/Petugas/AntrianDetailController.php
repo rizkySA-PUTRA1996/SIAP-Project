@@ -37,7 +37,7 @@ class AntrianDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DetailAntrian $detailAntrian, $id)
+    public function show($id)
     {
     $detail = DetailAntrian::with(['antrian', 'riwayat'])
         ->where('id_resep', $id)
