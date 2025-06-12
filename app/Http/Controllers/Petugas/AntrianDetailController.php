@@ -38,20 +38,17 @@ class AntrianDetailController extends Controller
      * Display the specified resource.
      */
     public function show(DetailAntrian $detailAntrian, $id)
-{
-    $detail = DetailAntrian::with(['antrian', 'riwayat'])->findOrFail($id);
+    {
+    $detail = DetailAntrian::with(['antrian', 'riwayat'])
+        ->where('id_resep', $id)
+        ->firstOrFail();
 
-    $idResep = $detail->antrian->id_resep ?? null;
-
-    $resepDetails = [];
-    if ($idResep) {
-        $resepDetails = DetailAntrian::with('obat.kategori')
-        ->where('id_resep', $idResep)
+    $resepDetails = DetailAntrian::with('obat.kategori')
+        ->where('id_resep', $id)
         ->get();
-    }
 
     return view('petugas.antrianDetail', compact('detail', 'resepDetails'));
-}
+    }
 
     /**
      * Show the form for editing the specified resource.
