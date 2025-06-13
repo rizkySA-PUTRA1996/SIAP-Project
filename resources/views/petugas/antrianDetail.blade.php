@@ -55,7 +55,6 @@
     </div>
 
     <div class="flex items-start gap-8">
-        {{-- Box Antrian (dengan desain baru sesuai image_612979.png) --}}
         <div class="bg-white rounded-xl border border-gray-300 px-6 py-4 text-center shadow-md">
             {{-- Mengubah teks "Antrian" menjadi Kode E-Resep --}}
             <p class="text-base text-gray-500">{{ $detail->antrian->id_resep ?? '-' }}</p>

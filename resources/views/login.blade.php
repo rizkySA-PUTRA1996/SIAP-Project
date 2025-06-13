@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-800">
-    <div class="relative min-h-screen flex items-center justify-center bg-cover bg-center before:absolute before:inset-0 before:bg-black/40" style="background-image: url('assets/img/bg-apotik.png');">
+    <div class="relative min-h-screen flex items-center justify-center bg-cover bg-center before:absolute before:inset-0 before:bg-black/40" style="background-image: url('assets/img/bg-apotik.jpg');">
     <!-- Login Card -->
     <div class="relative z-10 bg-white bg-opacity-100 p-8 rounded-lg shadow-md w-full max-w-md">
       <!-- Logo -->
