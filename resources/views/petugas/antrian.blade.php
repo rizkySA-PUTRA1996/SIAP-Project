@@ -69,9 +69,7 @@
     {{-- Tabel Antrean --}}
     <section>
         <div class="overflow-x-auto border rounded-lg shadow-sm">
-            {{-- Tambahkan 'w-max' di sini. Ini akan membuat tabel memiliki lebar maksimal dari kontennya. --}}
-            {{-- Jika lebar konten melebihi lebar div induk, scrollbar akan muncul. --}}
-            <table class="min-w-full w-max text-sm divide-y divide-gray-200">
+            <table class="min-w-full text-sm divide-y divide-gray-200">
                 <thead class="bg-blue-900 text-white">
                     <tr>
                         <th class="py-2 px-4 text-left font-medium">No</th>
@@ -88,11 +86,11 @@
                     @forelse ($antrian as $a)
                         <tr class="hover:bg-gray-50">
                             <td class="py-2 px-4 whitespace-nowrap">{{ $loop->iteration }}</td>
-                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->rm }}</td>
-                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->id_resep }}</td>
+                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->rm ?? '-'}}</td>
+                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->id_resep ?? '-' }}</td>
                             <td class="py-2 px-4 whitespace-nowrap">{{ $a->no_registrasi ?? '-'}}</td>
                             <td class="py-2 px-4 whitespace-nowrap">{{ $a->poli->nama_poli ?? '-'}}</td>
-                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->no_antrian }}</td>
+                            <td class="py-2 px-4 whitespace-nowrap">{{ $a->no_antrian ?? '-'}}</td>
                             <td class="py-2 px-4 whitespace-nowrap">
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full
                                     {{ $a->status === 'Sudah Bayar' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' }}">
@@ -100,10 +98,14 @@
                                 </span>
                             </td>
                             <td class="py-2 px-4 text-center">
+                                {{-- SOLUSI: Link 'Detail' selalu ada dan aktif --}}
                                 <a href="{{ route('petugas.antrianDetail', $a->id_resep) }}"
                                    class="font-medium {{ $a->status === 'Sudah Bayar' ? 'text-blue-600 hover:text-blue-900' : 'text-gray-400' }}">
                                     Detail
                                 </a>
+                                {{-- Saya hapus 'pointer-events-none' agar link selalu bisa diklik --}}
+                                {{-- Meskipun begitu, disarankan untuk mengelola logika apa yang terjadi
+                                     saat detail diakses untuk status yang belum 'Sudah Bayar' di controller detailnya. --}}
                             </td>
                         </tr>
                     @empty

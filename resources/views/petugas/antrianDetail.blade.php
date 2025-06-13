@@ -1,6 +1,6 @@
 @extends('layouts.petugas')
 
-@section('title', 'Detail Antrean') {{-- Tetap gunakan ini untuk judul tab browser --}}
+@section('title', 'Detail Antrean')
 
 @section('content')
     {{-- Header Halaman --}}
@@ -55,11 +55,9 @@
     </div>
 
     <div class="flex items-start gap-8">
-        {{-- Box Antrian (dengan desain baru sesuai image_612979.png) --}}
         <div class="bg-white rounded-xl border border-gray-300 px-6 py-4 text-center shadow-md">
-            {{-- Mengubah teks "Antrian" menjadi Kode E-Resep --}}
-            <p class="text-base text-gray-500">{{ $detail->antrian->id_resep ?? '-' }}</p>
-            <p class="text-5xl font-bold text-blue-900 mt-1">{{ $detail->antrian->no_antrian }}</p>
+            <p class="text-base text-gray-500">Antrian</p>
+            <p class="text-5xl font-bold text-blue-900 mt-1">{{ $detail->antrian->no_antrian ?? '-'}}</p>
         </div>
 
         {{-- Info Resep --}}

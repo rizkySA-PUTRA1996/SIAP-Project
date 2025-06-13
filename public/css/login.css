@@ -1,0 +1,33 @@
+.login-card-base-shadow {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.login-card-3d:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* Input Icon (Left) */
+.input-icon {
+    position: absolute;
+    left: 0.75rem; /* Menggeser sedikit ke dalam dari pl-11 (1.1rem) */
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+    width: 1.25rem;
+    color: #9ca3af;
+    pointer-events: none;
+}
+
+/* Toggle Password Icon (Right) */
+.password-toggle-icon {
+    position: absolute;
+    right: 0.75rem; /* Menggeser sedikit ke dalam dari pr-11 (1.1rem) */
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.25rem;
+    width: 1.25rem;
+    color: #9ca3af;
+    cursor: pointer;
+    z-index: 10;
+}

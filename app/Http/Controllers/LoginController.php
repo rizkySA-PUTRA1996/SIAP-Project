@@ -34,13 +34,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             return match ($user->role) {
-                'Admin' => redirect()->route('admin.stokObat.index'),
-                'Petugas' => redirect()->route('petugas.antrian'),
+                'Admin' => redirect()->route('admin.dashboard'),
+                'Petugas' => redirect()->route('petugas.dashboard'),
                 default => redirect()->route('login')->withErrors(['role' => 'Role tidak dikenali.']),
             };
-            // Fallback jika role tidak dikenali
-            Auth::logout();
-            return back()->withErrors(['role' => 'Role tidak dikenali.']);
         }
 
         return back()->withErrors([

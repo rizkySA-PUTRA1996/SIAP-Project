@@ -6,7 +6,7 @@
     <title>@yield('title', 'Apoteker Dashboard')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    @stack('styles') {{-- Untuk CSS spesifik halaman --}}
+    @stack('styles')
 </head>
 <body class="font-sans bg-gray-100">
     <div class="flex min-h-screen">

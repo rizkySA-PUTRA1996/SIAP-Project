@@ -20,9 +20,9 @@ class RedirectIfAuthenticated
 
         if ($user) {
             if ($user->role === 'Admin') {
-                return redirect()->route('admin.stokObat');
+                return redirect()->route('admin.dashboard');
             } elseif ($user->role === 'Petugas') {
-                return redirect()->route('petugas.antrian');
+                return redirect()->route('petugas.dashboard');
             }
 
             // Jika role tidak dikenali, logout

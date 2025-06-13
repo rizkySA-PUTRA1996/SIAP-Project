@@ -26,14 +26,6 @@
         <div class="mb-4">
           <label for="password" class="block text-gray-700 text-sm font-medium mb-1">Kata Sandi</label>
           <input type="password" id="password" name="password" class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-          <div class="text-right mt-1">
-            <a href="#" class="text-blue-500 text-sm hover:underline">Lupa Kata Sandi ?</a>
-          </div>
-        </div>
-
-        <div class="mb-4 flex items-center">
-          <input type="checkbox" id="remember" name="remember" class="mr-2">
-          <label for="remember" class="text-sm text-gray-700">Ingat Saya</label>
         </div>
 
         <button type="submit" name="submit" class="w-full bg-blue-900 text-white py-2 rounded hover:bg-blue-800">Masuk</button>

@@ -90,9 +90,9 @@
                     @endphp
                     <tr>
                         <td class="border px-4 py-2">{{ $id_resep }}</td>
-                        <td class="border px-4 py-2">{{ $first->antrian->rm }}</td>
+                        <td class="border px-4 py-2">{{ $first->antrian->rm ?? '-'}}</td>
                         <td class="border px-4 py-2">{{ $first->riwayat->nama_pasien ?? '-'}}</td>
-                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_diterima ?? '-' }}</td>
+                        <td class="border px-4 py-2">{{ $first->riwayat->tanggal_diterima ?? '-'}}</td>
                         <td class="border px-4 py-2">{{ $first->riwayat->tanggal_selesai ?? '-'}}</td>
                         <td class="px-4 py-2 text-green-600 border">{{ $first->riwayat->status ?? '-' }}</td>
                         <td class="border px-4 py-2 relative">
@@ -145,11 +145,11 @@
                         <tbody class="bg-gray-50">
                             @foreach ($items as $detail)
                                 <tr>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->kode_obat ?? '-' }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->nama_obat ?? '-'}}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->kategori->nama_kategori ?? '-' }}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->obat->bentuk_satuan ?? '-'}}</td>
-                                    <td class="px-4 py-2 border">{{ $detail->jumlah ?? '-'}}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->id_obat }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->nama_obat }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->kategori->nama_kategori }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->obat->bentuk_satuan }}</td>
+                                    <td class="px-4 py-2 border">{{ $detail->jumlah }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

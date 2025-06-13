@@ -6,19 +6,18 @@ use App\Http\Controllers\Petugas\AntrianController;
 use App\Http\Controllers\Petugas\AntrianDetailController;
 use App\Http\Controllers\Petugas\RiwayatController;
 use App\Http\Controllers\Petugas\StokObatController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Petugas\DashboardController as PetugasDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::fallback(function () {
     if (Auth::check()) {
         $user = Auth::user();
         if ($user->role === 'Admin') {
-            return redirect()->route('admin.stokObat.index');
+            return redirect()->route('admin.dashboard');
         } elseif ($user->role === 'Petugas') {
-            return redirect()->route('petugas.antrian');
+            return redirect()->route('petugas.dashboard');
         }
     }
     return redirect()->route('login');
@@ -34,6 +33,7 @@ Route::post('logout', [LoginController::class, 'destroy'])
     ->name('logout');
 
     Route::middleware(['auth', 'Petugas'])->prefix('petugas')->group(function () {
+        Route::get('dashboard', [PetugasDashboardController::class, 'index'])->name('petugas.dashboard');
         Route::get('antrian', [AntrianController::class, 'index'])->name('petugas.antrian');
         Route::get('obat', [StokObatController::class, 'index'])->name('petugas.stokObat');
         Route::get('riwayat', [RiwayatController::class, 'index'])->name('petugas.riwayatAntrian');
@@ -41,5 +41,6 @@ Route::post('logout', [LoginController::class, 'destroy'])
     });
 
     Route::middleware(['auth', 'Admin'])->prefix('admin')->group(function () {
-        Route::resource('/obat', ObatController::class)->names('admin.stokObat');
+        Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+        Route::resource('obat', ObatController::class)->names('admin.stokObat');
     });
