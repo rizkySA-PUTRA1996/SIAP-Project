@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', [LoginApiController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [LoginApiController::class, 'logout']);
 
-Route::resource('petugas/antrian', AntrianController::class);
+Route::resource('petugas/antrean', AntrianController::class);
 Route::resource('petugas/riwayat', RiwayatController::class);
 Route::resource('petugas/obat', StokObatController::class);
 Route::resource('petugas/detail-antrean', AntrianDetailController::class);
