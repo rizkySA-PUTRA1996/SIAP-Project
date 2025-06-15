@@ -10,6 +10,26 @@ use Illuminate\Http\Request;
 
 class AntrianDetailController extends Controller
 {
+    public function index()
+    {
+        try {
+            // Ambil satu detail
+            $detail = DetailAntrian::all();
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Detail Resep berhasil diambil',
+                'data' => AntrianDetailResource::collection($detail),
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+                'data' => [],
+            ], 500);
+        }
+    }
+    
     public function show($id)
     {
         try {
