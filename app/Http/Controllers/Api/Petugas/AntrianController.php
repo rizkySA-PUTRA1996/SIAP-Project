@@ -17,7 +17,7 @@ class AntrianController extends Controller
     {
         try {
             // Ambil data dengan relasi jika dibutuhkan
-            $antrian = Antrian::with('poli')->get();
+            $antrian = Antrian::all();
 
             return response()->json([
                 'status' => true,

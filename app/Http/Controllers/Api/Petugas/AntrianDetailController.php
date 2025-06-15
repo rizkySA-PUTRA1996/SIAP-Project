@@ -13,7 +13,6 @@ class AntrianDetailController extends Controller
     public function index()
     {
         try {
-            // Ambil satu detail
             $detail = DetailAntrian::all();
 
             return response()->json([
@@ -29,7 +28,7 @@ class AntrianDetailController extends Controller
             ], 500);
         }
     }
-    
+
     public function show($id)
     {
         try {
