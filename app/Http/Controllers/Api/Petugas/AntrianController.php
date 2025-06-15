@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AntrianResource;
 use App\Models\Petugas\Antrian;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class AntrianController extends Controller
@@ -11,27 +13,16 @@ class AntrianController extends Controller
      /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
         try {
-            $antrian = Antrian::all();
-
-            $data = $antrian->map(function ($item, $index) {
-                return [
-                    'no' => $index + 1,
-                    'rekam medis' => $item->rm,
-                    'no resep' => $item->id_resep,
-                    'no registrasi' => $item->no_registrasi,
-                    'id poli' => $item->id_poli,
-                    'Antrean' => $item->no_antrian,
-                    'status' => $item->status,
-                ];
-            });
+            // Ambil data dengan relasi jika dibutuhkan
+            $antrian = Antrian::with('poli')->get();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Data Antrian',
-                'data' => $data,
+                'data' => AntrianResource::collection($antrian),
             ]);
         } catch (\Exception $e) {
             return response()->json([

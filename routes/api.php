@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Admin\ObatController;
 use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\Petugas\AntrianController;
 use App\Http\Controllers\Api\Petugas\AntrianDetailController;
+use App\Http\Controllers\Api\Petugas\KategoriObatController;
 use App\Http\Controllers\Api\Petugas\RiwayatController;
 use App\Http\Controllers\Api\Petugas\StokObatController;
 use Illuminate\Http\Request;
@@ -26,5 +27,6 @@ Route::resource('petugas/antrian', AntrianController::class);
 Route::resource('petugas/riwayat', RiwayatController::class);
 Route::resource('petugas/obat', StokObatController::class);
 Route::resource('petugas/detail', AntrianDetailController::class);
+Route::apiResource('petugas/kategori-obat', KategoriObatController::class);
 
 Route::resource('admin/obat', ObatController::class)->names('admin.obat');

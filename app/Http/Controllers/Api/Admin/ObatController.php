@@ -3,36 +3,22 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ObatResource;
 use App\Models\Admin\Obat;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ObatController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): JsonResponse
     {
         try {
-            // Ambil semua detail antrian beserta relasi
-            $obat = Obat::with(['kategori'])->get();
-
-            // Format data sesuai struktur yang dibutuhkan frontend (mirip modal HTML)
-            $data = $obat->map(function ($item) {
-
-                return [
-                    'id_obat' => $item->id_obat,
-                    'nama_obat' => $item->nama_obat,
-                    'kategori' => $item->kategori->nama_kategori,
-                    'bentuk_satuan' => $item->bentuk_satuan,
-                    'stok' => $item->stok,
-                    'harga_jual' => $item->harga,
-                    'kadaluarsa' => $item->kadaluarsa,
-                ];
-            });
+            $obat = Obat::with('kategori')->get();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Data Stok Obat',
-                'data' => $data,
+                'data' => ObatResource::collection($obat),
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -57,9 +43,11 @@ class ObatController extends Controller
 
         try {
             $obat = Obat::create($validated);
+            $obat->load('kategori');
+
             return response()->json([
                 'message' => 'Data obat berhasil disimpan.',
-                'data' => $obat
+                'data' => new ObatResource($obat)
             ], 201);
         } catch (\Exception $e) {
             return response()->json([
@@ -72,19 +60,11 @@ class ObatController extends Controller
     public function show($id): JsonResponse
     {
         try {
-            $obat = Obat::with(['kategori'])->findOrFail($id);
+            $obat = Obat::with('kategori')->findOrFail($id);
             return response()->json([
                 'status' => true,
                 'message' => 'Data obat berhasil diambil.',
-                'data' => [
-                    'id_obat' => $obat->id_obat,
-                    'nama_obat' => $obat->nama_obat,
-                    'kategori' => $obat->kategori->nama_kategori ?? null,
-                    'bentuk_satuan' => $obat->bentuk_satuan,
-                    'stok' => $obat->stok,
-                    'harga jual' => $obat->harga,
-                    'kadaluarsa' => $obat->kadaluarsa,
-                ]
+                'data' => new ObatResource($obat)
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -97,17 +77,14 @@ class ObatController extends Controller
 
     public function update(Request $request, $id): JsonResponse
     {
-        // Validasi input
         $validated = $request->validate([
             'stok' => 'nullable|numeric',
             'kadaluarsa' => 'nullable|date',
         ]);
 
         try {
-            // Cari obat berdasarkan ID
             $obat = Obat::findOrFail($id);
 
-            // Update data jika ada input yang valid
             if (isset($validated['stok'])) {
                 $obat->stok = $validated['stok'];
             }
@@ -117,21 +94,12 @@ class ObatController extends Controller
             }
 
             $obat->save();
-            $obat->load('kategori'); // Pastikan relasi dimuat
+            $obat->load('kategori');
 
-            // Response JSON dengan struktur terformat
             return response()->json([
                 'status' => true,
                 'message' => 'Data obat berhasil diperbarui.',
-                'data' => [
-                    'id_obat' => $obat->id_obat,
-                    'nama_obat' => $obat->nama_obat,
-                    'kategori' => $obat->kategori->nama_kategori ?? null,
-                    'bentuk_satuan' => $obat->bentuk_satuan,
-                    'stok' => $obat->stok,
-                    'harga jual' => $obat->harga,
-                    'kadaluarsa' => $obat->kadaluarsa,
-                ]
+                'data' => new ObatResource($obat)
             ]);
         } catch (\Exception $e) {
             return response()->json([
@@ -141,16 +109,17 @@ class ObatController extends Controller
             ], 500);
         }
     }
-    public function destroy($id_obat): JsonResponse
+
+    public function destroy($id): JsonResponse
     {
         try {
-            $obat = Obat::findOrFail($id_obat);
+            $obat = Obat::findOrFail($id);
             $obat->delete();
 
             return response()->json([
                 'status' => true,
                 'message' => 'Data obat berhasil dihapus.',
-            ], 200);
+            ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,

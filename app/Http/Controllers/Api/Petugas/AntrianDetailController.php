@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Petugas;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AntrianDetailResource;
 use App\Models\Petugas\DetailAntrian;
 use App\Models\Petugas\StokObat;
 use Illuminate\Http\Request;
@@ -12,43 +13,23 @@ class AntrianDetailController extends Controller
     public function show($id)
     {
         try {
-            // Ambil satu data DetailAntrian (e_resep_detail) berdasarkan ID (id_detail)
+            // Ambil satu detail
             $detail = DetailAntrian::with(['antrian', 'riwayat'])->findOrFail($id);
-
             $idResep = $detail->antrian->id_resep ?? null;
 
-            $resepDetails = [];
+            // Ambil semua detail lain berdasarkan id_resep yang sama (untuk modal resep)
             if ($idResep) {
                 $resepDetails = DetailAntrian::with(['obat.kategori'])
                     ->where('id_resep', $idResep)
-                    ->get()
-                    ->map(function ($item) {
-                        return [
-                            'id_obat'    => $item->obat->id_obat ?? '-',
-                            'nama_obat'    => $item->obat->nama_obat ?? '-',
-                            'kategori'     => $item->kategori->nama_kategori ?? '-',
-                            'bentuk_satuan'=> $item->obat->bentuk_satuan ?? '-',
-                            'jumlah'       => $item->jumlah ?? '-',
-                            'aturan_pakai' => $item->aturan_pakai ?? '-',
-                        ];
-                    });
+                    ->get();
+                // inject manual property ke resource
+                $detail->setRelation('resep_details', $resepDetails);
             }
 
             return response()->json([
                 'status' => true,
                 'message' => 'Detail berhasil diambil',
-                'data' => [
-                    'antrian' => [
-                        'no_antrian' => $detail->antrian->no_antrian ?? '-',
-                        'id_resep'   => $detail->antrian->id_resep ?? '-',
-                    ],
-                    'riwayat' => [
-                        'nama_pasien'       => $detail->riwayat->nama_pasien ?? '-',
-                        'tanggal_diterima'  => $detail->riwayat->tanggal_diterima ?? '-',
-                        'status'            => $detail->riwayat->status ?? '-',
-                    ],
-                    'resep_details' => $resepDetails,
-                ]
+                'data' => new AntrianDetailResource($detail)
             ]);
         } catch (\Exception $e) {
             return response()->json([
