@@ -14,21 +14,11 @@ class AntrianDetailController extends Controller
     {
         try {
             // Ambil satu detail
-            $detail = DetailAntrian::with(['antrian', 'riwayat'])->findOrFail($id);
-            $idResep = $detail->antrian->id_resep ?? null;
-
-            // Ambil semua detail lain berdasarkan id_resep yang sama (untuk modal resep)
-            if ($idResep) {
-                $resepDetails = DetailAntrian::with(['obat.kategori'])
-                    ->where('id_resep', $idResep)
-                    ->get();
-                // inject manual property ke resource
-                $detail->setRelation('resep_details', $resepDetails);
-            }
+            $detail = DetailAntrian::all()->findOrFail($id);
 
             return response()->json([
                 'status' => true,
-                'message' => 'Detail berhasil diambil',
+                'message' => 'Detail Resep berhasil diambil',
                 'data' => new AntrianDetailResource($detail)
             ]);
         } catch (\Exception $e) {

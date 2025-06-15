@@ -17,7 +17,7 @@ class ObatResource extends JsonResource
         return [
             'id_obat'       => $this->id_obat,
             'nama_obat'     => $this->nama_obat,
-            'kategori'      => $this->kategori->nama_kategori ?? null,
+            'id_kategori'   => $this->id_kategori,
             'bentuk_satuan' => $this->bentuk_satuan,
             'stok'          => $this->stok,
             'harga_jual'    => $this->harga,

@@ -16,14 +16,7 @@ class AntrianResource extends JsonResource
     {
         return [
             'id_resep'       => $this->id_resep,
-            'no_antrian'     => $this->no_antrian,
-            'rekam_medis'    => $this->rm,
-            'id_poli'        => $this->id_poli,
-            'poli'           => $this->poli->nama_poli ?? null,
             'no_registrasi'  => $this->no_registrasi ?? null,
-            'status'         => $this->status ?? null,
-            'riwayat'        => $this->whenLoaded('riwayat'),
-            'detail_antrian' => $this->whenLoaded('detailAntrian'),
         ];
     }
 }
