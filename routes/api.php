@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->post('/logout', [LoginApiController::class, '
 Route::resource('petugas/antrian', AntrianController::class);
 Route::resource('petugas/riwayat', RiwayatController::class);
 Route::resource('petugas/obat', StokObatController::class);
-Route::resource('petugas/detail', AntrianDetailController::class);
+Route::resource('petugas/detail-antrean', AntrianDetailController::class);
 Route::resource('petugas/kategori-obat', KategoriObatController::class);
 
 Route::resource('admin/obat', ObatController::class)->names('admin.obat');

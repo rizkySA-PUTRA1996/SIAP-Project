@@ -11,14 +11,14 @@ class KategoriObatController extends Controller
 {
     public function index()
     {
-        $kategori = KategoriObat::with('stokObat')->get();
+        $kategori = KategoriObat::all();
         return KategoriObatResource::collection($kategori);
     }
 
     // Menampilkan 1 kategori berdasarkan ID
     public function show($id)
     {
-        $kategori = KategoriObat::with('stokObat')->findOrFail($id);
+        $kategori = KategoriObat::findOrFail($id);
         return new KategoriObatResource($kategori);
     }
 

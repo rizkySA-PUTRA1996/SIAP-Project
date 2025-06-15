@@ -34,7 +34,7 @@ Route::post('logout', [LoginController::class, 'destroy'])
 
     Route::middleware(['auth', 'Petugas'])->prefix('petugas')->group(function () {
         Route::get('dashboard', [PetugasDashboardController::class, 'index'])->name('petugas.dashboard');
-        Route::get('antrian', [AntrianController::class, 'index'])->name('petugas.antrian');
+        Route::get('antrean', [AntrianController::class, 'index'])->name('petugas.antrian');
         Route::get('obat', [StokObatController::class, 'index'])->name('petugas.stokObat');
         Route::get('riwayat', [RiwayatController::class, 'index'])->name('petugas.riwayatAntrian');
         Route::get('detail/{id_resep}', [AntrianDetailController::class, 'show'])->name('petugas.antrianDetail');
