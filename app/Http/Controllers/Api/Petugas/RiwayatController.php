@@ -3,48 +3,26 @@
 namespace App\Http\Controllers\Api\Petugas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Petugas\DetailAntrian;
-use Illuminate\Http\Request;
+use App\Http\Resources\RiwayatResource;
+use App\Models\Petugas\Riwayat;
+use Illuminate\Http\JsonResponse;
 
 class RiwayatController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
         try {
-            // Ambil semua detail antrian beserta relasi
-            $riwayat = DetailAntrian::with(['riwayat', 'antrian', 'obat.kategori'])->get();
-
-            // Kelompokkan berdasarkan id_resep
-            $grouped = $riwayat->groupBy('id_resep');
-
-            // Format data sesuai struktur yang dibutuhkan frontend (mirip modal HTML)
-            $data = $grouped->map(function ($items, $id_resep) {
-                $first = $items->first();
-
-                return [
-                    'id_resep' => $id_resep,
-                    'nama_pasien' => $first->riwayat->nama_pasien ?? '-',
-                    'obat' => $items->map(function ($detail) {
-                        return [
-                            'kode_obat' => $detail->obat->id_obat ?? '-',
-                            'nama_obat' => $detail->obat->nama_obat ?? '-',
-                            'kategori_obat' => $detail->kategori->nama_kategori ?? '-',
-                            'bentuk_satuan' => $detail->obat->bentuk_satuan ?? '-',
-                            'jumlah' => $detail->jumlah,
-                        ];
-                    })->values(),
-                ];
-            })->values(); // `values()` untuk reset index jadi numerik
+            $riwayat = Riwayat::all();
 
             return response()->json([
                 'status' => true,
-                'message' => 'Data Riwayat E-Resep',
-                'data' => $data,
+                'message' => 'Data Riwayat',
+                'data' => RiwayatResource::collection($riwayat),
             ]);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => false,
-                'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+                'message' => 'Gagal mengambil data: ' . $e->getMessage(),
                 'data' => [],
             ], 500);
         }
