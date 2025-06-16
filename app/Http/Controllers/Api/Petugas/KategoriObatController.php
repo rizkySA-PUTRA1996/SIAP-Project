@@ -18,7 +18,7 @@ class KategoriObatController extends Controller
     // Menampilkan 1 kategori berdasarkan ID
     public function show($id)
     {
-        $kategori = KategoriObat::with('stokObat')->findOrFail($id);
+        $kategori = KategoriObat::findOrFail($id);
         return new KategoriObatResource($kategori);
     }
 

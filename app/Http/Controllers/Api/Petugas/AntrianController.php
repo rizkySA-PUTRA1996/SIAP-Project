@@ -16,7 +16,6 @@ class AntrianController extends Controller
     public function index(): JsonResponse
     {
         try {
-            // Ambil data dengan relasi jika dibutuhkan
             $antrian = Antrian::all();
 
             return response()->json([

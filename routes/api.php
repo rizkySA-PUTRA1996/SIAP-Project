@@ -7,16 +7,13 @@ use App\Http\Controllers\Api\Petugas\AntrianDetailController;
 use App\Http\Controllers\Api\Petugas\KategoriObatController;
 use App\Http\Controllers\Api\Petugas\RiwayatController;
 use App\Http\Controllers\Api\Petugas\StokObatController;
+use App\Http\Controllers\Api\UserApiController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-// default route
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return new UserResource($request->user());
 });
 
 // new route

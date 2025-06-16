@@ -33,7 +33,7 @@ class AntrianDetailController extends Controller
     {
         try {
             // Ambil satu detail
-            $detail = DetailAntrian::all()->findOrFail($id);
+            $detail = DetailAntrian::findOrFail($id);
 
             return response()->json([
                 'status' => true,

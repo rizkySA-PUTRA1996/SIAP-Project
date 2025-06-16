@@ -10,7 +10,7 @@ class AntrianController extends Controller
 {
     public function index(Request $request)
 {
-    $antrian = Antrian::with('poli')->paginate(10);
+    $antrian = Antrian::paginate(10);
 
     // Ubah angka status menjadi teks
     $antrian->getCollection()->transform(function ($item) {
@@ -34,7 +34,7 @@ class AntrianController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
