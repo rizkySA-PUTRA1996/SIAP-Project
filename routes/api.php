@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\LoginApiController;
 use App\Http\Controllers\Api\Petugas\AntrianController;
 use App\Http\Controllers\Api\Petugas\AntrianDetailController;
 use App\Http\Controllers\Api\Petugas\KategoriObatController;
+use App\Http\Controllers\Api\Admin\KategoriObatController as AdminKategoriObatController;
 use App\Http\Controllers\Api\Petugas\RiwayatController;
 use App\Http\Controllers\Api\Petugas\StokObatController;
 use App\Http\Controllers\Api\UserApiController;
@@ -17,13 +18,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // new route
-Route::post('/login', [LoginApiController::class, 'login']);
-Route::middleware('auth:sanctum')->post('/logout', [LoginApiController::class, 'logout']);
+Route::prefix('petugas')->name('petugas.')->group(function () {
+    Route::resource('antrean', AntrianController::class);
+    Route::resource('riwayat', RiwayatController::class);
+    Route::resource('obat', StokObatController::class);
+    Route::resource('detail-antrean', AntrianDetailController::class);
+    Route::resource('kategori-obat', KategoriObatController::class);
+});
 
-Route::resource('petugas/antrean', AntrianController::class);
-Route::resource('petugas/riwayat', RiwayatController::class);
-Route::resource('petugas/obat', StokObatController::class);
-Route::resource('petugas/detail-antrean', AntrianDetailController::class);
-Route::resource('petugas/kategori-obat', KategoriObatController::class);
-
-Route::resource('admin/obat', ObatController::class)->names('admin.obat');
+// ROUTE UNTUK ADMIN
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('obat', ObatController::class);
+    Route::resource('kategori-obat', AdminKategoriObatController::class);
+});

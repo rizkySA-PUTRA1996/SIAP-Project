@@ -47,5 +47,5 @@ class AntrianDetailController extends Controller
                 'data' => [],
             ], 500);
         }
-}
+    }
 }
