@@ -17,6 +17,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return new UserResource($request->user());
 });
 
+Route::post('login', [LoginApiController::class, 'login']);
+Route::middleware('auth:sanctum')->post('logout', [LoginApiController::class, 'logout']);
 // new route
 Route::prefix('petugas')->name('petugas.')->group(function () {
     Route::resource('antrean', AntrianController::class);

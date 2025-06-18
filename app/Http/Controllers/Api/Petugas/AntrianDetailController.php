@@ -29,16 +29,15 @@ class AntrianDetailController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id_resep)
     {
         try {
-            // Ambil satu detail
-            $detail = DetailAntrian::findOrFail($id);
+            $detail = DetailAntrian::where('id_resep', $id_resep)->get();
 
             return response()->json([
                 'status' => true,
-                'message' => 'Detail Resep berhasil diambil',
-                'data' => new AntrianDetailResource($detail)
+                'message' => 'Detail resep berhasil diambil',
+                'data' => AntrianDetailResource::collection($detail)
             ]);
         } catch (\Exception $e) {
             return response()->json([
