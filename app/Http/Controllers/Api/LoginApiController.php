@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,10 @@ class LoginApiController extends Controller
         $token = $user->createToken('API Token')->plainTextToken;
 
         return response()->json([
+            'status' => true,
             'message' => 'Login berhasil',
-            'token' => $token
+            'data' => new UserResource($user),
+            'token' => $token,
         ]);
     }
 

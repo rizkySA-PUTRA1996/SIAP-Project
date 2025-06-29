@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('login', [LoginApiController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [LoginApiController::class, 'logout']);
 // new route
+
 Route::prefix('petugas')->name('petugas.')->group(function () {
     Route::resource('antrean', AntrianController::class);
     Route::resource('riwayat', RiwayatController::class);
