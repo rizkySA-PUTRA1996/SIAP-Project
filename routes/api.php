@@ -21,7 +21,7 @@ Route::post('login', [LoginApiController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [LoginApiController::class, 'logout']);
 // new route
 
-Route::prefix('petugas')->name('petugas.')->group(function () {
+Route::prefix('petugas')->name('petugas.')->middleware(['auth:sanctum', 'role:Petugas'])->group(function () {
     Route::resource('antrean', AntrianController::class);
     Route::resource('riwayat', RiwayatController::class);
     Route::resource('obat', StokObatController::class);
@@ -30,7 +30,7 @@ Route::prefix('petugas')->name('petugas.')->group(function () {
 });
 
 // ROUTE UNTUK ADMIN
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'role:Admin'])->group(function () {
     Route::resource('obat', ObatController::class);
     Route::resource('kategori-obat', AdminKategoriObatController::class);
 });
