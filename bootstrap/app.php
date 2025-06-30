@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'Petugas' => \App\Http\Middleware\IsPetugas::class,
             'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
             'role' => \App\Http\Middleware\RoleMiddleware::class,
+            'cors' => \Illuminate\Http\Middleware\HandleCors::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

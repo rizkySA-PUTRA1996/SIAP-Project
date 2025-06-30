@@ -33,4 +33,4 @@ Route::prefix('petugas')->name('petugas.')->middleware(['auth:sanctum', 'role:Pe
 Route::prefix('admin')->name('admin.')->middleware(['auth:sanctum', 'role:Admin'])->group(function () {
     Route::resource('kategori-obat', AdminKategoriObatController::class);
 });
-Route::resource('obat', ObatController::class);
+Route::resource('admin/obat', ObatController::class);
